@@ -1,0 +1,15 @@
+{
+  "name": "get-url-query",
+  "version": "2.0.1",
+  "description": "easily convert query to json",
+  "main": "index.js",
+  "scripts": {},
+  "author": "joenix",
+  "keywords": [
+    "query",
+    "param",
+    "url"
+  ],
+  "license": "ISC",
+  "devDependencies": {}
+}
