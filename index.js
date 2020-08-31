@@ -122,6 +122,10 @@ function make(key, value, result, exp = new RegExp(/\[\]$/)) {
 function json(query) {
   // Get Query
   query = search(query || location.search || location.href);
+  // None
+  if (query === null) {
+    return {}
+  }
   // Make Part
   query = cut(query, "pt");
   // Donate
