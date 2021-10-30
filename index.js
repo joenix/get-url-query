@@ -1,3 +1,7 @@
+function noop() {
+  return {};
+}
+
 /**
  * @name recursive
  * ======== ======== ========
@@ -13,6 +17,21 @@ function recursive(parts, callback) {
 }
 
 /**
+ * @name formatter
+ * ======== ======== ========
+ * @param {String} value
+ * @return {String}
+ * ======== ======== ========
+ */
+function formatter(value) {
+  try {
+    value = decodeURIComponent(value);
+  } catch (e) {}
+
+  return value;
+}
+
+/**
  * @name search
  * ======== ======== ========
  * @param {String} query
@@ -21,7 +40,7 @@ function recursive(parts, callback) {
  */
 function search(query) {
   // Escape
-  query = unescape(query);
+  query = decodeURIComponent(query);
   // Match Query
   query = query.match(/\?(.*)+$/);
   // Has
@@ -81,6 +100,9 @@ function factory(parts, result = {}) {
  * ======== ======== ========
  */
 function make(key, value, result, exp = new RegExp(/\[\]$/)) {
+  // Formatter
+  value = formatter(value);
+
   // W3C Rule
   if (exp.test(key)) {
     // Rebuild
@@ -124,7 +146,7 @@ function json(query) {
   query = search(query || location.search || location.href);
   // None
   if (query === null) {
-    return {}
+    return {};
   }
   // Make Part
   query = cut(query, "pt");
@@ -134,4 +156,4 @@ function json(query) {
   return query;
 }
 
-export default json;
+export default typeof location == 'undefined' ? noop : json;
