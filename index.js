@@ -156,4 +156,16 @@ function json(query) {
   return query;
 }
 
-export default typeof location == 'undefined' ? noop : json;
+/**
+ * @name Extension-Location
+ * ======== ======== ========
+ * @description get query on get
+ * ======== ======== ========
+ */
+Object.defineProperty(location, "query", {
+  get() {
+    return json();
+  }
+});
+
+export default typeof location == "undefined" ? noop : json;

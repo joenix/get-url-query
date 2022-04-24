@@ -19,4 +19,7 @@ getUrlQuery();
 
 // get query from `string`
 getUrlQuery("http://example.com/?hello=world&hi=joenix");
+
+// expand location
+location.query; // { hello: 'world', hi: 'joenix' }
 ```
