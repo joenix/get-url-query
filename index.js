@@ -3,26 +3,6 @@ function noop() {
 }
 
 /**
- * @name value
- * ======== ======== ========
- * @param {String} value
- * @return {String}
- * ======== ======== ========
- */
-function value(value) {
-  // No Value
-  if ([undefined, null].includes(value)) {
-    return value;
-  }
-  // Number Value
-  if (value.constructor === Number) {
-    return value - 0;
-  }
-  // Any Value
-  return value;
-}
-
-/**
  * @name recursive
  * ======== ======== ========
  * @param {Array} parts
@@ -48,7 +28,7 @@ function formatter(value) {
     value = decodeURIComponent(value);
   } catch (e) {}
 
-  return value;
+  return isNaN(value - 0) ? value : value - 0;
 }
 
 /**
@@ -128,7 +108,7 @@ function make(key, value, result, exp = new RegExp(/\[\]$/)) {
     // Rebuild
     key = key.replace(exp, "");
     // Merge
-    result[key] = result[key] ? [].concat(value(result[key])) : [];
+    result[key] = result[key] ? [].concat(result[key]) : [];
     // Rec
     make(key, value, result);
     // Stop
