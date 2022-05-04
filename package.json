@@ -1,6 +1,6 @@
 {
   "name": "get-url-query",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "easily convert query to json",
   "main": "index.js",
   "scripts": {},
