@@ -120,6 +120,11 @@ function make(key, value, result, exp = new RegExp(/\[\]$/)) {
 
   // Is Undefined
   if (ing === undefined) {
+    // No Set Value as `undefined`
+    if (value === "undefined") {
+      return;
+    }
+
     result[key] = value;
   }
 
