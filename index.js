@@ -28,7 +28,7 @@ function formatter(value) {
     value = decodeURIComponent(value);
   } catch (e) {}
 
-  return isNaN(value - 0) ? value : value - 0;
+  return isNaN(+value) ? value : +value;
 }
 
 /**
