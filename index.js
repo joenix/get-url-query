@@ -140,15 +140,15 @@ function make(key, value, result, exp = new RegExp(/\[\]$/)) {
 }
 
 /**
- * @name json
+ * @name getUrlQuery
  * ======== ======== ========
  * @param {String} key
  * @param {String} value
  * ======== ======== ========
  */
-function json(query) {
+function getUrlQuery(query = location.search) {
   // Get Query
-  query = search(query || location.search || location.href);
+  query = search(query || location.href);
   // None
   if (query === null) {
     return {};
@@ -173,4 +173,4 @@ Object.defineProperty(location, "query", {
   }
 });
 
-export default typeof location == "undefined" ? noop : json;
+export default typeof location == "undefined" ? noop : getUrlQuery;
