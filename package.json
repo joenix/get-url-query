@@ -3,6 +3,9 @@
   "version": "2.0.12",
   "description": "easily convert query to json",
   "main": "index.js",
+  "types": [
+    "index.d.ts"
+  ],
   "scripts": {},
   "author": "joenix",
   "keywords": [
