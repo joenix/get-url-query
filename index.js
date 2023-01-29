@@ -169,7 +169,7 @@ function getUrlQuery(query = location.search) {
  */
 Object.defineProperty(location, "query", {
   get() {
-    return json();
+    return getUrlQuery();
   }
 });
 
