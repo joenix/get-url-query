@@ -167,10 +167,14 @@ function getUrlQuery(query = location.search) {
  * @description get query on get
  * ======== ======== ========
  */
-Object.defineProperty(location, "query", {
-  get() {
-    return getUrlQuery();
-  }
-});
+try {
+  Object.defineProperty(location, "query", {
+    get() {
+      return getUrlQuery();
+    }
+  });
+}
+catch(e) {}
 
+// Export for Usage
 export default typeof location == "undefined" ? noop : getUrlQuery;
